@@ -5,12 +5,13 @@ var util = require('gulp-util');
 var nodemon = require('gulp-nodemon');
 var stylus = require('gulp-stylus');
 var sourcemaps = require('gulp-sourcemaps');
+var nib = require('nib');
 
 var prod = !!util.env.production;
 
 var paths = {
   scripts: ['client/js/**/*.js'],
-  styles: ['client/css/**/*.styl']
+  styles: ['client/styl/**/*.styl']
 };
 
 gulp.task('clean', function() {
@@ -30,14 +31,23 @@ gulp.task('styles', ['clean'], function() {
   return gulp.src(paths.styles)
     .pipe(sourcemaps.init())
     .pipe(stylus({
-      compress: prod
+      compress: prod,
+      use: nib()
     }))
-    .pipe(sourcemas.write())
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('build/css/'))
 });
 
 // Rerun the task when a file changes
-gulp.task('watch', function() {
+gulp.task('watch', ['scripts', 'styles'], function() {
+  console.log(stylus())
+  gulp.task('start', function () {
+  nodemon({
+    script: 'server.js',
+    ext: 'js',
+    env: { 'NODE_ENV': prod ? 'production' : 'development' }
+  })
+})
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.styles, ['styles']);
 });
