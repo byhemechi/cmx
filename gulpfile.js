@@ -41,12 +41,10 @@ gulp.task('styles', ['clean'], function() {
 // Rerun the task when a file changes
 gulp.task('watch', ['scripts', 'styles'], function() {
   console.log(stylus())
-  gulp.task('start', function () {
   nodemon({
     script: 'server.js',
     ext: 'js',
     env: { 'NODE_ENV': prod ? 'production' : 'development' }
-  })
 })
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.styles, ['styles']);
