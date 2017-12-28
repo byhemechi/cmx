@@ -22,7 +22,7 @@ gulp.task('scripts', ['clean'], function() {
   // Run webpack and babel on our client-side scripts
   return gulp.src(paths.scripts)
     .pipe(webpack(require('./webpack.config.js')))
-    .pipe(gulp.dest('build/js/'))
+    .pipe(gulp.dest('build/js/'));
 });
 
 gulp.task('styles', ['clean'], function() {
@@ -35,17 +35,16 @@ gulp.task('styles', ['clean'], function() {
       use: nib()
     }))
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest('build/css/'))
+    .pipe(gulp.dest('build/css/'));
 });
 
 // Rerun the task when a file changes
 gulp.task('watch', ['scripts', 'styles'], function() {
-  console.log(stylus())
   nodemon({
     script: 'server.js',
     ext: 'js',
     env: { 'NODE_ENV': prod ? 'production' : 'development' }
-})
+});
   gulp.watch(paths.scripts, ['scripts']);
   gulp.watch(paths.styles, ['styles']);
 });
