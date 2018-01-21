@@ -14,7 +14,7 @@ app.use("/assets", express.static(path.join(__dirname, "client")));
 
 // Handle requests
 app.use("/", function(req, res) {
-  fs.readFile(`${path.join(__dirname, "/pages/", req.url.replace(/^\/$/, "home").replace(/\/$/, ""))}.md`, "utf-8", function(err, data) {
+  fs.readFile(`${path.join(__dirname, "/pages/", req.url.replace(/^\/$/, "home.md").replace(/\/$/, ""))}`, "utf-8", function(err, data) {
     if (err) {
       res.render("error");
     } else {
