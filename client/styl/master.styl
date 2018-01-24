@@ -10,9 +10,11 @@ body
 article
   width 100%
   max-width 40rem
-  margin 0 auto
+  transition margin 0.1s ease
+  margin 1rem auto
   color darken(tan, 75%)
-  padding 5rem 1rem
+  padding 1rem
+  box-sizing border-box
   font-family sans-serif
 
 a
@@ -20,24 +22,35 @@ a
   text-decoration none
 
 .group
-  display inline-flex
+  display flex
   border-radius 5px
   border solid 1px tan
+  flex-wrap wrap
   overflow hidden
   a
     padding 1rem 1.5rem
     border-radius 5px
+    text-align center
+    flex 1
+    white-space pre
     color darken(tan, 75%)
     text-decoration none
+
     background darken(#fffbd8, 5%)
     &:hover
       background darken(#fffbd8, 10%)
     img
       max-height 2rem
-      float left
       margin -0.5rem
+      margin-bottom -0.6rem
     border 0
-    border-right solid 1px tan
+    border-left solid 1px tan
+    border-top solid 1px tan
+    margin-top -1px
+    margin-left -1px
     border-radius 0
     &:last-child
       border-right 0
+@media all and (max-width: 40rem)
+  article
+    margin 0 auto
