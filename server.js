@@ -14,17 +14,29 @@ app.use("/assets", express.static(path.join(__dirname, "client")));
 
 // Handle requests
 app.use("/", function(req, res) {
-  fs.readFile(`${path.join(__dirname, "/pages/", req.url.replace(/^\/$/, "home.md").replace(/\/$/, ""))}`, "utf-8", function(err, data) {
-    if (err) {
-      res.render("error");
-    } else {
-      res.render("page", {
-        title: "test",
-        content: data
-      });
-    }
-  });
+  var pdath = path.join(__dirname, "pages", req.url.replace(/\/$/, "/index.html"));
+
+  console.log(pdath);
+  if (pdath.match(/\.html$/i)) {
+    fs.readFile(pdath, "utf-8", function(err, data) {
+      var title = data.match(/<\? (.*?) \?>/i);
+      var titleindex = 1;
+
+      if (err) {
+        res.render("error");
+      } else {
+
+        res.render("page", {
+          title: title && title[titleindex] ? title[titleindex] : "untitled",
+          content: data
+        });
+      }
+    });
+  } else {
+    res.sendFile(pdath);
+  }
 });
+app.use("/", express.static(path.join(__dirname, "pages")));
 
 // Start the server
 app.listen(config.port, function(err) {
