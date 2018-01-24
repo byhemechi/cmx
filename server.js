@@ -4,7 +4,9 @@ const config = require("./config/config.def");
 const fs = require('fs');
 const path = require('path');
 const Remarkable = require('remarkable');
-const md = new Remarkable();
+const md = new Remarkable({
+  html: true
+});
 const fm = require('front-matter');
 
 // Config
