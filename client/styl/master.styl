@@ -16,18 +16,28 @@ article
   font-family sans-serif
 
 a
-  padding 1rem 1.5rem
+  color #34f
+  text-decoration none
+
+.group
+  display inline-flex
   border-radius 5px
   border solid 1px tan
-  display inline-block
-  color darken(tan, 75%)
-  text-decoration none
-  background darken(#fffbd8, 5%)
-  &:hover
-    background darken(#fffbd8, 10%)
-
-  img
-    max-height 2rem
-    float left
-    margin -0.5rem
-    margin-right 0.5rem
+  overflow hidden
+  a
+    padding 1rem 1.5rem
+    border-radius 5px
+    color darken(tan, 75%)
+    text-decoration none
+    background darken(#fffbd8, 5%)
+    &:hover
+      background darken(#fffbd8, 10%)
+    img
+      max-height 2rem
+      float left
+      margin -0.5rem
+    border 0
+    border-right solid 1px tan
+    border-radius 0
+    &:last-child
+      border-right 0

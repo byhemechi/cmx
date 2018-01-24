@@ -18,7 +18,7 @@ Stylesheets for cmx are written in [stylus](http://stylus-lang.com/), which is c
 ## Getting started
 We recommend using yarn for dependency management, but npm will work fine too.
 
-To get started with cmx, just clone this repo, install the dependencies and compile the styles and scripts. While developing youre styles and scripts, We recommend running `yarn dev` instead of `yarn build && yarn start`.
+To get started with cmx, just clone this repo, install the dependencies and compile the styles and scripts. While developing your styles and scripts, We recommend running `yarn dev` instead of `yarn build && yarn start`.
 
 ```bash
 # Clone the repo
